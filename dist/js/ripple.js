@@ -1,6 +1,6 @@
 (function() {
   $('[ripple]').on('mousedown', function(e) {
-    var $posX, $posY, $ripple, $rippleColor, $rippleSize;
+    var $posX, $posY, $ripple, $rippleColor, $rippleDuration, $rippleSize;
     e.preventDefault;
     $ripple = $('<div />', {
       "class": 'ripple-effect'
@@ -12,6 +12,7 @@
     } else {
       $rippleSize = 200;
     }
+    $rippleDuration = $(this).attr('ripple-duration');
     $posX = $(this).offset().left + ($rippleSize / 2);
     $posY = $(this).offset().top + ($rippleSize / 2);
     $ripple.appendTo(this);
@@ -20,11 +21,12 @@
       'top': e.pageY - $posY,
       'left': e.pageX - $posX,
       'width': $rippleSize,
-      'height': $rippleSize
+      'height': $rippleSize,
+      'animation-duration': $rippleDuration + 's'
     });
     return setTimeout((function() {
       return $ripple.remove();
-    }), 1000);
+    }), $rippleDuration * 1000);
   });
 
 }).call(this);

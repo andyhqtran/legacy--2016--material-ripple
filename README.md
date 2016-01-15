@@ -9,9 +9,10 @@ Material Ripple Effect that can be added to any element.
 - **ripple** - If attribute exists, then ripple effect will be applied.
 - **ripple-color** - Sets the ripple color, default `#000`
 - **ripple-size** - Sets the ripple size, default `200`
+- **ripple-duration** - Sets the ripple duration, default `1`
 
 ```html
-<div class='className' ripple='' ripple-color='blue' ripple-size='200'>
+<div class='className' ripple='' ripple-color='blue' ripple-size='100' ripple-duration='0.3'>
   content here
 </div>
 ```
@@ -78,7 +79,7 @@ Material Ripple Effect that can be added to any element.
 ```js
 (function() {
   $('[ripple]').on('mousedown', function(e) {
-    var $posX, $posY, $ripple, $rippleColor, $rippleSize;
+    var $posX, $posY, $ripple, $rippleColor, $rippleDuration, $rippleSize;
     e.preventDefault;
     $ripple = $('<div />', {
       "class": 'ripple-effect'
@@ -90,6 +91,7 @@ Material Ripple Effect that can be added to any element.
     } else {
       $rippleSize = 200;
     }
+    $rippleDuration = $(this).attr('ripple-duration');
     $posX = $(this).offset().left + ($rippleSize / 2);
     $posY = $(this).offset().top + ($rippleSize / 2);
     $ripple.appendTo(this);
@@ -98,11 +100,12 @@ Material Ripple Effect that can be added to any element.
       'top': e.pageY - $posY,
       'left': e.pageX - $posX,
       'width': $rippleSize,
-      'height': $rippleSize
+      'height': $rippleSize,
+      'animation-duration': $rippleDuration + 's'
     });
     return setTimeout((function() {
       return $ripple.remove();
-    }), 1000);
+    }), $rippleDuration * 1000);
   });
 
 }).call(this);

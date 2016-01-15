@@ -19,6 +19,9 @@ $('[ripple]').on 'mousedown', (e) ->
   else
     $rippleSize = 200
 
+  # Gets ripple duration
+  $rippleDuration = $(this).attr 'ripple-duration'
+
   # Gets X & Y Pos and subtract by 1/2 of $rippleSize
   $posX = $(this).offset().left + ($rippleSize / 2)
   $posY = $(this).offset().top + ($rippleSize / 2)
@@ -33,9 +36,10 @@ $('[ripple]').on 'mousedown', (e) ->
     'left': e.pageX - $posX
     'width': $rippleSize
     'height': $rippleSize
+    'animation-duration': $rippleDuration + 's'
   })
 
   # Removes after set interval
   setTimeout ( ->
     $ripple.remove()
-  ), 1000
+  ), $rippleDuration * 1000
