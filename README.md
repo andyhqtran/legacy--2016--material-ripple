@@ -1,6 +1,10 @@
 # material-ripple
 Material Ripple Effect that can be added to any element.
 
+[Live Demo](http://codepen.io/andytran/pen/YwrVpO)
+
+-
+
 #### Attributes
 - **ripple** - If attribute exists, then ripple effect will be applied.
 - **ripple-color** - Sets the ripple color, default `#000`
