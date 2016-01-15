@@ -21,7 +21,7 @@ module.exports = (grunt) ->
         expand: true
         cwd: 'src/scss'
         src: ['*.{scss,sass}', '!_*.{scss,sass}']
-        dest: 'dist/css'
+        dest: 'css'
         ext: '.css'
 
     # CSSComb Task
@@ -30,9 +30,9 @@ module.exports = (grunt) ->
         options:
           config: 'src/.csscomb.json'
         expand: true
-        cwd: 'dist/css'
+        cwd: 'css'
         src: ['*.css', '!*.min.css', '!*.map']
-        dest: 'dist/css'
+        dest: 'css'
         ext: '.css'
 
     # PostCSS Task
@@ -50,7 +50,7 @@ module.exports = (grunt) ->
                 'ie 8']
             })
           ]
-        src: ['dist/**/*.css']
+        src: ['**/*.css']
 
     # CSSmin Task
     cssmin:
@@ -58,9 +58,9 @@ module.exports = (grunt) ->
         options:
           sourcemap: false
         expand: true
-        cwd: 'dist/css'
+        cwd: 'css'
         src: ['*.css', '!*.map']
-        dest: 'dist/css'
+        dest: 'css'
         ext: '.min.css'
 
 
@@ -72,7 +72,7 @@ module.exports = (grunt) ->
         base: true
         cwd: 'src/coffee'
         src: ['*.coffee']
-        dest: 'dist/js'
+        dest: 'js'
         ext: '.js'
 
     # Coffeelint Task
